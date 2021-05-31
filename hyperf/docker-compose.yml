@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+    activity.ahxmgk:
+        image: activity.ahxmgk:1.0
+        container_name: activity.ahxmgk.container
+        environment:
+            - APP_ENV=prd
+            - TIMEZONE=Asia/Shanghai
+        #        restart: always
+        #build:
+        #    context: .
+        #    dockerfile: Dockerfile
+        ports:
+            - "9501:9501"
+
+            #        entrypoint: ["php"]
+        entrypoint: ["php", "bin/hyperf.php", "start"]
+        working_dir: '/data/activity.ahxmgk'
+        #        command:
+        #            #            - "php -v"
+        #            - "php /data/activity.ahxmgk/bin/hyperf.php start"
+        stdin_open: true
+        tty: true
+        volumes:
+            - /data/activity.ahxmgk:/data/activity.ahxmgk
